@@ -4,11 +4,11 @@ import static com.github.tomakehurst.wiremock.client.WireMock.*;
 
 public class Main {
     public static void main(String[] args) {
-        configureFor("172.16.1.10",8280);
+        configureFor("vip.ddns.name", 8280);
 
         removeAllMappings();
 
-        stubFor(get(urlPathEqualTo("/user/1"))
+        stubFor(post(urlPathEqualTo("/alerts"))
                 .willReturn(aResponse()
                         .withStatus(200)
                         .withHeader("Content-Type", "application/json")
